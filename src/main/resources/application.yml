@@ -1,0 +1,17 @@
+spring:
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  datasource:
+    url: jdbc:postgresql://localhost:5432/processing
+    username: postgres
+    password: postgres
+
+  flyway:
+    enabled: true
+    locations: classpath:db
+    url: jdbc:postgresql://localhost:5432/processing
+    user: postgres
+    password: postgres
