@@ -1,3 +1,5 @@
+
+
 spring:
   jpa:
     database: POSTGRESQL
@@ -15,3 +17,10 @@ spring:
     url: jdbc:postgresql://localhost:5432/processing
     user: postgres
     password: postgres
+
+server:
+  port: 8081
+
+service:
+  currency:
+    url: http://localhost:8080
