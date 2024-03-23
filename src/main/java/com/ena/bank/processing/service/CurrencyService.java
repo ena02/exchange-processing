@@ -17,6 +17,6 @@ public class CurrencyService {
     private String currencyUrl;
 
     public BigDecimal loadCurrencyRate(String code) {
-        return restClient.getForObject(currencyUrl + "/currecy/rate/{code}", BigDecimal.class, code);
+        return restClient.getForObject(currencyUrl + "/currency/rate/{code}", BigDecimal.class, code);
     }
 }
