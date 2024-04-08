@@ -1,3 +1,9 @@
+cloud:
+  db-host: localhost
+  eureka-host: localhost
+  currency-url: http://localhost:8081
+
+
 spring:
   application:
     name: exchange-precessing-service
@@ -7,27 +13,40 @@ spring:
     hibernate:
       ddl-auto: none
   datasource:
-    url: jdbc:postgresql://localhost:5432/processing
+    url: jdbc:postgresql://${cloud.db-host}:5432/processing
     username: postgres
     password: postgres
 
   flyway:
     enabled: true
     locations: classpath:db
-    url: jdbc:postgresql://localhost:5432/processing
+    url: jdbc:postgresql://${cloud.db-host}:5432/processing
     user: postgres
     password: postgres
 
+  security:
+    oauth2:
+      resourceserver:
+        opaque:
+          introspection-uri: http://localhost:9000/oauth2/token-info
+          introspection-client-id: processing
+          introspection-client-secret: processing123
+
 server:
-  port: 8081
+  port: 8082
+
+
+
 
 service:
   currency:
-    url: http://localhost:8080
+    url: ${cloud.currency-url}
 
 
 eureka:
   client:
     enabled: true
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://${cloud.eureka-host}:8761/eureka
+
+
